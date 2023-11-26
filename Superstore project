@@ -26,32 +26,42 @@ VALUES
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
 
-
+#Looking at prices of the items listed.
 SELECT item_name, price
 FROM superstore
 ORDER BY price DESC ;
 
+
+#looking at the average prices per category.
 SELECT AVG(price), category
 FROM superstore
 GROUP BY category
 ORDER BY price DESC;
 
+
+#looking at the highest priced item per category.
 SELECT MAX(price), category, item_name
 FROM superstore
 GROUP BY category
 ORDER BY price DESC;
 
+
+#A closer look at the Kitchen Supplies
 SELECT price, category, item_name
 FROM superstore
 WHERE category = 'Kitchen Supplies'
 GROUP BY item_name
 ORDER BY price DESC;
 
+
+#Checking the stock for Kitchen supplies of each item.
 SELECT stock_quantity, item_name, category
 FROM superstore
 WHERE category = 'Kitchen Supplies'
 GROUP BY item_name;
 
+
+#Getting the above average item per category. 
 SELECT *
 FROM superstore
 WHERE average_rating > (SELECT AVG(average_rating) FROM superstore)
