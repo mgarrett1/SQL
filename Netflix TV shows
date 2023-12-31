@@ -81,6 +81,13 @@ FROM "netflix_titles_info" AS titles
 FULL JOIN "netflix_people" AS people
 ON titles.show_id = people.show_id;
 
+##Selecting the director for the movie 'The Starling'
+SELECT title.show_id, title.title, title.release_year, title.rating, people.director
+FROM "netflix_titles_info" AS title
+LEFT JOIN "netflix_people" AS people
+ON title.show_id = people.show_id
+ORDER BY title.release_year DESC;
+
 ##Release date of each title ordered by the year
 SELECT title.show_id, title.title, title.release_year, title.rating, people.director
 FROM "netflix_titles_info" AS title
